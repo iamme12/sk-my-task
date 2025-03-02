@@ -1,27 +1,68 @@
-# SkMyTask
+# Condition Builder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+## Overview
+Condition Builder is an Angular 17.3 application that allows users to create complex rules and conditions using AND/OR logic. Users can define conditions based on specific properties and operators, with numeric input values. The configured conditions are then output in JSON format and stored in IndexedDB.
 
-## Development server
+## Project Structure
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Components
+- **complex-conditions**: Contains three key elements:
+  - Properties dropdown
+  - Conditions dropdown (with five operators)
+  - Numeric input field
+- **complex-rules**: Manages AND/OR logic and includes a `+` button to add either a new group or a condition within a rule.
+- **json-builder**: Displays the generated JSON output of the conditions.
 
-## Code scaffolding
+### Pages
+- **conditions-builder**: The main page where all components are assembled.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Helpers
+- **common-conditions.ts**: Defines the interface for conditions and is utilized in the relevant components.
+- **common-properties.ts**: Defines the interface for properties and is used in related components.
 
-## Build
+## Storage Usage
+The generated JSON data is stored in IndexedDB using the `idb` library.
+- To install the library, run:
+  ```sh
+  npm install idb
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Running the Project
+1. Open a terminal and navigate to the project directory:
+   ```sh
+   cd [project-name]
+   ```
+2. Open the project in VS Code:
+   ```sh
+   code .
+   ```
+3. Start the development server:
+   ```sh
+   ng serve
+   ```
 
-## Running unit tests
+### Additional Notes
+- If `node_modules` is not installed, run:
+  ```sh
+  npm install
+  ```
+- To serve the project directly from the command line:
+  ```sh
+  ng serve
+  ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Generating Components and Pages
+To generate a new component or page, use the Angular CLI:
+```sh
+ng g component [folder-name]/[component-name]
+```
+Alternatively, use:
+```sh
+ng generate component [folder-name]/[component-name]
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Building the Project
+To build the project, run:
+```sh
+ng build
+```
