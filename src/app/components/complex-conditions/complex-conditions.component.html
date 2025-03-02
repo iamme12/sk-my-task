@@ -1,0 +1,45 @@
+<div class="complex-conditions-builder">
+  <div
+    *ngFor="let condition of conditions; let i = index"
+    class="complex-conditions"
+  >
+    <div class="properties">
+      <select name="props" id="props" [(ngModel)]="condition.selectedProp">
+        <option *ngFor="let prop of propertyOptions" [value]="prop.value">
+          {{ prop.label }}
+        </option>
+      </select>
+    </div>
+    <div class="conds">
+      <select name="conds" id="conds" [(ngModel)]="condition.selectedCond">
+        <option *ngFor="let cond of conditionsOptions" [value]="cond.value">
+          {{ cond.label }}
+        </option>
+      </select>
+    </div>
+    <div class="values">
+      <input
+        type="number"
+        [(ngModel)]="condition.numericValue"
+        min="0"
+        max="100"
+        step="1"
+      />
+    </div>
+
+    <div class="x-button-container">
+      <button class="x-button" (click)="removeCondition(i)">
+        <svg viewBox="0 0 24 24" class="x-icon">
+          <path
+            fill="white"
+            d="M6 6L18 18M6 18L18 6"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

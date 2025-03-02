@@ -1,0 +1,33 @@
+/* Center the JSON Builder */
+.json-builder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.json-builder {
+  background: #f9f9f9;
+  border-radius: 10px;
+  border: 3px solid #007bff;
+  width: 600px;
+  height: 100%;
+  max-width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+pre {
+  white-space: pre-wrap;
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  color: #ad5c5c;
+  text-align: left;
+  overflow: auto;
+  max-height: 300px;
+}

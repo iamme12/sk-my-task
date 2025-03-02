@@ -1,0 +1,57 @@
+<div class="rules-list">
+  <div class="complex-rules">
+    <div class="radio">
+      <ng-container *ngFor="let option of radioOptions">
+        <input
+          type="radio"
+          name="options"
+          [value]="option.value"
+          [(ngModel)]="group.selectedRadio"
+          id="{{ option.value }}"
+          (change)="updateGroupSelection(option.value)"
+        />
+        <label for="{{ option.value }}">{{ option.label }}</label>
+      </ng-container>
+    </div>
+
+    <div class="menu-container">
+      <button class="plus-button" (click)="toggleMenu()">+</button>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown-menu" *ngIf="isMenuOpen">
+        <button (click)="addGroup()">Add Group</button>
+        <button (click)="addCondition()">Add Condition</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complex Conditions Component -->
+  <div class="complex-conditions-comp">
+    <complex-conditions></complex-conditions>
+  </div>
+
+  <!-- Nested Groups -->
+  <div class="nested-groups">
+    <div class="group-container" *ngFor="let group of groups; let i = index">
+      <!-- Pass the entire group object to each complex-rules component -->
+      <complex-rules
+        [group]="group"
+        (updateSelection)="updateGroupSelectionFromChild(group.id)"
+      ></complex-rules>
+      <div class="x-button-container">
+        <button class="x-button" (click)="removeGroup(i)">
+          <svg viewBox="0 0 24 24" class="x-icon">
+            <path
+              fill="white"
+              d="M6 6L18 18M6 18L18 6"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
